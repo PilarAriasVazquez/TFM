@@ -3,16 +3,13 @@ import os
 import glob
 
 # --- Configuración ---
-# 1. Elige el tamaño del modelo de Whisper. Opciones: "tiny", "base", "small", "medium", "large".
-#    "base" es un buen punto de partida (rápido y bastante preciso).
-#    Usa "medium" o "large" para mayor precisión si tienes una buena GPU.
+# Tamaño del modelo de Whisper. Opciones: "tiny", "base", "small", "medium", "large".
+
 MODEL_SIZE = "large"
 
 
-# 2. Especifica la carpeta donde tienes guardados tus archivos de audio.
 AUDIO_FOLDER = "Audios_48samplerate/Normal"
 
-# 3. Nombre del archivo de salida que se generará.
 OUTPUT_FILE = "Audios_48samplerateTranscripciones/Normal/metadata.csv"
 # --------------------
 
@@ -31,7 +28,7 @@ def transcribe_audios():
         print("Asegúrate de tener PyTorch instalado (`pip install torch`) si tienes una GPU NVIDIA.")
         return
 
-    # Comprueba si la carpeta de audios existe
+
     if not os.path.isdir(AUDIO_FOLDER):
 
         print(f"Error: La carpeta '{AUDIO_FOLDER}' no fue encontrada.")
@@ -39,7 +36,7 @@ def transcribe_audios():
         return
 
     # Busca todos los archivos de audio compatibles en la carpeta
-    # Puedes añadir más extensiones si las necesitas (ej: "*.flac")
+
     audio_files = glob.glob(os.path.join(AUDIO_FOLDER, "*.wav")) + \
                   glob.glob(os.path.join(AUDIO_FOLDER, "*.mp3")) + \
                   glob.glob(os.path.join(AUDIO_FOLDER, "*.m4a"))
@@ -64,7 +61,6 @@ def transcribe_audios():
                 # Obtiene solo el nombre del archivo, sin la ruta
                 filename = os.path.basename(audio_file)
                 
-                # Escribe la línea en el formato para Piper
                 f.write(f"{filename}|{transcription}\n")
                 
             except Exception as e:
@@ -76,4 +72,5 @@ def transcribe_audios():
 
 
 if __name__ == "__main__":
+
     transcribe_audios()
