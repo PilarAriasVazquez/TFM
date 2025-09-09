@@ -1,10 +1,10 @@
 import os
 
 from dotenv import load_dotenv
-from elevenlabs import VoiceSettings, play, save
+from elevenlabs import VoiceSettings, save
 from elevenlabs.client import ElevenLabs
 from io import BytesIO
-import uuid
+from typing import List
 
 load_dotenv()
 
@@ -13,15 +13,28 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 if not ELEVENLABS_API_KEY:
     raise ValueError("ELEVENLABS_API_KEY environment variable not set")
 
-client = ElevenLabs(
-    api_key=ELEVENLABS_API_KEY,
-)
+client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
-VOICE_ID_JUANFRAN ="toH9H8ONdalie9j9Vg0c"
-VOICE_ID_PILI ="pLesqRdHEp1qWzGCqD9s"
-VOICE_ID_ALVARO ="l8HZqnTh1I9Uhgiw7KCl"
+VOICE_ID_JUANFRAN = os.getenv("VOICE_ID_JUANFRAN")
+VOICE_ID_PILI = os.getenv("VOICE_ID_PILI")
+VOICE_ID_ALVARO = os.getenv("VOICE_ID_ALVARO")
+VOICE_ID_SERGIO = os.getenv("VOICE_ID_SERGIO")
+VOICE_ID_PABLO = os.getenv("VOICE_ID_PABLO")
 
-def clone_voice(name, audios):
+def clone_voice(name: str, audios: List[str]) -> None:
+   """
+    Esta función utiliza la API de ElevenLabs para clonar una voz a partir de uno o varios archivos de audio.
+
+    Parámetros:
+    ----------
+    name : str
+        Nombre que se le asignará a la voz clonada.
+    
+    audios : list
+        Lista de rutas de archivos de audio (por ejemplo, en formato .mp3 o .wav) que se utilizarán
+        como referencia para entrenar y generar la nueva voz.
+    """
+   
    audio_files = [BytesIO(open(audio, "rb").read()) for audio in audios]
    client.voices.ivc.create(
          name = name,
@@ -29,27 +42,31 @@ def clone_voice(name, audios):
    )
       
 
-def text_to_speech(text, voice_id):
+def text_to_speech(text: str, voice_id: str, save_file_path: str) -> str:
+   """
+   Esta función utiliza la API de ElevenLabs para convertir un texto en un archivo de audio,
+   usando una voz específica, y lo guarda en el disco.
+
+   Parámetros:
+   ----------
+   text : str
+      El texto que se desea convertir a voz.
    
-   return client.text_to_speech.convert (
-      text = text,
-      voice_id = voice_id,
-      model_id = "eleven_v3",
-      output_format = "mp3_44100_128",
-      voice_settings=VoiceSettings(
-         stability= 0.0,
-         similarity_boost= 1.0,
-         style= 0.0,
-         use_speaker_boost=True
-      )
-   )
+   voice_id : str
+      El identificador único de la voz que se utilizará para la conversión.
+   
+   save_file_path : str
+      Ruta base y nombre del archivo donde se guardará el audio generado.
+      La función añadirá automáticamente la extensión `.opus`.
 
-
-def text_to_speech_file(text: str, voice_id: str, save_file_path: str) -> str:
-    
-    response = client.text_to_speech.convert(
+   Retorno:
+   --------
+   str
+      Devuelve la ruta completa del archivo de audio guardado.
+   """
+   response = client.text_to_speech.convert(
         voice_id=voice_id,
-        output_format="mp3_22050_32",
+        output_format="opus_48000_32",
         text=text,
         model_id="eleven_v3",
         voice_settings=VoiceSettings(
@@ -59,18 +76,18 @@ def text_to_speech_file(text: str, voice_id: str, save_file_path: str) -> str:
             use_speaker_boost=True,
             speed=1.0,
          )
-    )
+      )
     
-    save_file_path = f"{save_file_path}.mp3"
+   save_file_path = f"{save_file_path}.opus"
     
-    save(response, save_file_path)
+   save(response, save_file_path)
 
-    print(f"{save_file_path}: A new audio file was saved successfully!")
+   print(f"{save_file_path}: A new audio file was saved successfully!")
     
-    return save_file_path
+   return save_file_path
 
 
 if __name__ == "__main__":
    text = "Hola mundo esto es una prueba"
    voice_id = VOICE_ID_JUANFRAN
-   text_to_speech_file(text=text, voice_id=voice_id, save_file_path="holamundo2")
+   text_to_speech_file(text=text, voice_id=voice_id, save_file_path="holamundo")
