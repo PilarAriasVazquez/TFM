@@ -5,7 +5,7 @@ from datetime import datetime
 import threading
 
 # --- CÓDIGO INICIAL (selección de dispositivo, etc.) ---
-print("🎙️ Dispositivos de entrada disponibles:\n")
+print("🎙Dispositivos de entrada disponibles:\n")
 for i, device in enumerate(sd.query_devices()):
     if device['max_input_channels'] > 0:
         print(f"{i}: {device['name']}")
@@ -32,7 +32,7 @@ def stop_on_enter():
 # --- Bucle principal ---
 i = 0
 while i < n_muestras:
-    input(f"👉 Pulsa ENTER para empezar a grabar la muestra {i+1}/{n_muestras}...")
+    input(f"Pulsa ENTER para empezar a grabar la muestra {i+1}/{n_muestras}...")
     
     stop_thread = threading.Thread(target=stop_on_enter)
     stop_thread.start()
@@ -44,7 +44,7 @@ while i < n_muestras:
     
     print("🎤 Grabación finalizada.")
 
-    # --- Bucle de confirmación MODIFICADO ---
+
     while True:
         # Ahora hay tres opciones: sí, no, o escuchar.
         respuesta = input("¿La grabación es correcta? (s/n/e para escuchar): ").lower().strip()
@@ -53,13 +53,13 @@ while i < n_muestras:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             nombre_archivo = os.path.join(carpeta_destino, f"sample_{i+1}_{timestamp}.wav")
             sf.write(nombre_archivo, audio, samplerate)
-            print(f"✅ Muestra guardada en: {nombre_archivo}\n")
+            print(f"Muestra guardada en: {nombre_archivo}\n")
             i += 1
             break
         elif respuesta == 'n':
-            print("❌ Grabación descartada. Repitiendo la misma muestra...\n")
+            print("Grabación descartada. Repitiendo la misma muestra...\n")
             break
-        # --- NUEVO: Opción para escuchar el audio ---
+     
         elif respuesta == 'e':
             print("🔊 Reproduciendo el audio grabado...")
             sd.play(audio, samplerate)
@@ -69,4 +69,5 @@ while i < n_muestras:
         else:
             print("Respuesta no válida. Por favor, introduce 's', 'n' o 'e'.")
 
-print("✅ Grabación completa.")
+
+print("Grabación completa.")
