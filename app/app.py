@@ -36,8 +36,8 @@ LOG_FILENAME = "funcionamiento_log.txt" # Archivo donde se guardan los logs
 
 # Cargamos los centroides para la clasificación de texto
 try:
-    centroid_non = pd.read_csv("Centroides/centroid_non.csv").to_numpy()
-    centroid_scam = pd.read_csv("Centroides/centroid_scam.csv").to_numpy()
+    centroid_non = pd.read_csv("../data/Centroides/centroid_non.csv").to_numpy()
+    centroid_scam = pd.read_csv("../data/Centroides/centroid_scam.csv").to_numpy()
     st.success("Centroides de texto cargados correctamente.")
 except FileNotFoundError:
     st.error("Error: No se encontraron los archivos de centroides.")

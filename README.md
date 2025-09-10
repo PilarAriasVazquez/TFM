@@ -5,32 +5,23 @@
 ![Status](https://img.shields.io/badge/Status-En%20Desarrollo-yellow)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-> **Detección de voces falsas mediante modelos de IA y generación de voz TTS**  
-> Proyecto desarrollado como parte del **Trabajo de Fin de Máster** en [Nombre de tu universidad].
+> **Detección de DeepFake Voice con análisis de contenido fraudulento mediante un enfoque multimodal de Deep Learning**  
+> Proyecto desarrollado como parte del **Trabajo de Fin de Máster** en la Universidad Complutense de Madrid.
 
 ---
 
 ## 🧠 Descripción del proyecto
 
-Breve explicación de lo que hace tu aplicación:  
-- ¿Cuál es el problema que resuelve?  
-- ¿Por qué es importante?  
-- ¿Qué tecnologías usa?  
-
-**Ejemplo:**
-> Este proyecto utiliza modelos de **machine learning** y **procesamiento de audio** para detectar posibles voces generadas artificialmente (*deepfake voice*).  
-> Además, integra **Hugging Face**, **PyTorch**, **Streamlit** y **ElevenLabs** para la clasificación, generación y visualización de resultados.
-
----
+En este proyecto se va a desarrollar un sistema para la detección de voces falsas generadas por Inteligencia Artificial (IA) y la identificación de posibles estafas telefónicas a través de un enfoque multimodal de Deep Learning (DL). La propuesta combina dos componentes principales: un modelo acústico entrenado para discriminar entre voz humana y voz sintética, y un modelo de procesamiento de lenguaje natural aplicado sobre la transcripción de la llamada para reconocer patrones característicos de fraude. 
 
 ## ✨ Características principales
 
 - 🎤 **Grabación de audios**: Captura de voz en tiempo real para el dataset.
+- 🧠 **Fine-tuning con Hugging Face**: Optimización de modelos preentrenados de clasificación de audio.
 - 🧩 **Clasificación de voces**: Modelos entrenados con MFCC + embeddings.
-- 🧠 **Fine-tuning con Hugging Face**: Optimización de modelos preentrenados.
-- 🔊 **Generación de voz TTS**: Integración con **ElevenLabs** para sintetizar voces.
+- 🔊 **Generación de voz TTS**: Integración con **ElevenLabs** para sintetizar voces a partir de textos.
 - 🌐 **Interfaz web**: Aplicación interactiva construida con **Streamlit**.
-- 📞 **Twilio API** *(opcional)*: Automatización de llamadas de prueba.
+- 📞 **Twilio API**: Automatización de llamadas con agente de IA como demo.
 
 ---
 
@@ -39,17 +30,17 @@ Breve explicación de lo que hace tu aplicación:
 ```bash
 TFM/
 ├── notebooks/
-│   ├── TextClassification_Hugging_Face.ipynb
-│   ├── Text_Classification_Embeddings.ipynb
-│   ├── finetuning.ipynb
-│   └── hugginface-model.ipynb
+│   ├── Audio_Classification_Fine-Tuning.ipynb
+|   ├── Audio_Classification_GenerateDataSet.ipynb
+│   ├── Audio_Classification_MFCC.ipynb
+|   ├── TextClassification_Hugging_Face.ipynb
+│   └── Text_Classification_Embeddings.ipynb
 ├── src/
-│   ├── grabador_audio.py
+│   ├── api_utils.py
 │   ├── clasificacion_mfcc_pytorch.py
-│   ├── elevenlabsClient.py
+│   ├── grabador_audio.py
 │   ├── generacion_voces_TTS.py
 │   ├── transcripciones.py
-│   └── llamada_twilio.py
 ├── app/
 │   └── streamlit_app.py
 ├── data/
@@ -58,9 +49,9 @@ TFM/
 │   └── transcripciones.csv
 ├── requirements.txt
 └── README.md
+```
 
-
-🚀 Instalación y ejecución
+## 🚀 Instalación y ejecución
 1️⃣ Clonar el repositorio
 
 ```bash
@@ -86,7 +77,7 @@ pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-🧪 Uso del proyecto
+## 🧪 Uso del proyecto
 
 | Funcionalidad      | Archivo / Comando                      | Descripción                                     |
 | ------------------ | -------------------------------------- | ----------------------------------------------- |
@@ -102,10 +93,13 @@ Crea un archivo .env en la raíz con tus credenciales:
 ELEVENLABS_API_KEY=tu_api_key
 TWILIO_SID=tu_sid
 TWILIO_TOKEN=tu_token
+TWILIO_FROM_NUMBER=tu_telefono_origen
+TWILIO_TO_NUMBER=tu_telefono_destino
+TWILIO_URL=tu_url_twilio
 ```
 
 
-🛠️ Tecnologías utilizadas
+## 🛠️ Tecnologías utilizadas
 <p align="center"> <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,github" /> <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="160"/> </p>
 
 <p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff6f61,100:6a5acd&height=150&section=footer"/> </p> ```
