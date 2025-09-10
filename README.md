@@ -1,4 +1,4 @@
-# 🎧 DeepFake Voice Detection – TFM
+# DeepFake Voice Detection – TFM
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)
@@ -10,22 +10,22 @@
 
 ---
 
-## 🧠 Descripción del proyecto
+## Descripción del proyecto
 
 En este proyecto se va a desarrollar un sistema para la detección de voces falsas generadas por Inteligencia Artificial (IA) y la identificación de posibles estafas telefónicas a través de un enfoque multimodal de Deep Learning (DL). La propuesta combina dos componentes principales: un modelo acústico entrenado para discriminar entre voz humana y voz sintética, y un modelo de procesamiento de lenguaje natural aplicado sobre la transcripción de la llamada para reconocer patrones característicos de fraude. 
 
-## ✨ Características principales
+## Características principales
 
-- 🎤 **Grabación de audios**: Captura de voz en tiempo real para el dataset.
-- 🧠 **Fine-tuning con Hugging Face**: Optimización de modelos preentrenados de clasificación de audio.
-- 🧩 **Clasificación de voces**: Modelos entrenados con MFCC + embeddings.
-- 🔊 **Generación de voz TTS**: Integración con **ElevenLabs** para sintetizar voces a partir de textos.
-- 🌐 **Interfaz web**: Aplicación interactiva construida con **Streamlit**.
-- 📞 **Twilio API**: Automatización de llamadas con agente de IA como demo.
+- **Grabación de audios**: Captura de voz en tiempo real para el dataset.
+- **Fine-tuning con Hugging Face**: Optimización de modelos preentrenados de clasificación de audio.
+- **Clasificación de voces**: Modelos entrenados con MFCC + embeddings.
+- **Generación de voz TTS**: Integración con **ElevenLabs** para sintetizar voces a partir de textos.
+- **Interfaz web**: Aplicación interactiva construida con **Streamlit**.
+- **Twilio API**: Automatización de llamadas con agente de IA como demo.
 
 ---
 
-## 🗂️ Estructura del repositorio
+## Estructura del repositorio
 
 ```bash
 TFM/
@@ -51,15 +51,15 @@ TFM/
 └── README.md
 ```
 
-## 🚀 Instalación y ejecución
-1️⃣ Clonar el repositorio
+## Instalación y ejecución
+Clonar el repositorio
 
 ```bash
 git clone https://github.com/PilarAriasVazquez/TFM.git
 cd TFM
 ```
 
-2️⃣ Crear un entorno virtual
+Crear un entorno virtual
 
 ```bash
 python3 -m venv venv
@@ -67,25 +67,26 @@ source venv/bin/activate   # Linux / Mac
 venv\Scripts\activate      # Windows
 ```
 
-3️⃣ Instalar dependencias
+Instalar dependencias
 ```bash
 pip install -r requirements.txt
 ```
 
-4️⃣ Ejecutar la app Streamlit
+Ejecutar la app Streamlit
 ```bash
+cd app
 streamlit run streamlit_app.py
 ```
 
-## 🧪 Uso del proyecto
+## Uso del proyecto
 
 | Funcionalidad      | Archivo / Comando                      | Descripción                                     |
 | ------------------ | -------------------------------------- | ----------------------------------------------- |
-| 🎤 Grabar audios   | `python grabador_audio.py`             | Inicia la grabadora y guarda audios etiquetados |
-| 🧩 Clasificar voz  | `python clasificacion_mfcc_pytorch.py` | Aplica el modelo para detectar deepfakes        |
-| 🔊 Generar voces   | `python generacion_voces_TTS.py`       | Genera audios sintéticos con ElevenLabs         |
-| 📜 Transcripciones | `python transcripciones.py`            | Crea un CSV con transcripciones automáticas     |
-| 🌐 App web         | `streamlit run streamlit_app.py`       | Lanza la interfaz web                           |
+| Grabar audios   | `python grabador_audio.py`             | Inicia la grabadora y guarda audios etiquetados |
+| Clasificar voz  | `python clasificacion_mfcc_pytorch.py` | Aplica el modelo para detectar deepfakes        |
+| Generar voces   | `python generacion_voces_TTS.py`       | Genera audios sintéticos con ElevenLabs         |
+| Transcripciones | `python transcripciones.py`            | Crea un CSV con transcripciones automáticas     |
+| App web         | `streamlit run streamlit_app.py`       | Lanza la interfaz web                           |
 
 
 Crea un archivo .env en la raíz con tus credenciales:
