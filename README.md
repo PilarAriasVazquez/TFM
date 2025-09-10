@@ -1,6 +1,6 @@
 # DeepFake Voice Detection – TFM
 
-![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)
 ![Status](https://img.shields.io/badge/Status-En%20Desarrollo-yellow)
 ![License](https://img.shields.io/badge/License-MIT-green)
