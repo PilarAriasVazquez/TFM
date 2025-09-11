@@ -17,9 +17,9 @@ En este proyecto se va a desarrollar un sistema para la detección de voces fals
 ## Características principales
 
 - **Grabación de audios**: Captura de voz en tiempo real para el dataset.
-- **Fine-tuning con Hugging Face**: Optimización de modelos preentrenados de clasificación de audio.
-- **Clasificación de voces**: Modelos entrenados con MFCC + embeddings.
 - **Generación de voz TTS**: Integración con **ElevenLabs** para sintetizar voces a partir de textos.
+- **Clasificación de audio**: Modelo finetuneado a partir del modelo facebook/wav2vec2.
+- **Clasificación de texto**: Mediante embeddings generados por el modelo Sentence Transformers.
 - **Interfaz web**: Aplicación interactiva construida con **Streamlit**.
 - **Twilio API**: Automatización de llamadas con agente de IA como demo.
 
@@ -31,9 +31,9 @@ En este proyecto se va a desarrollar un sistema para la detección de voces fals
 TFM/
 ├── notebooks/
 │   ├── Audio_Classification_Fine-Tuning.ipynb
-|   ├── Audio_Classification_GenerateDataSet.ipynb
+│   ├── Audio_Classification_GenerateDataSet.ipynb
 │   ├── Audio_Classification_MFCC.ipynb
-|   ├── TextClassification_Hugging_Face.ipynb
+│   ├── TextClassification_Hugging_Face.ipynb
 │   └── Text_Classification_Embeddings.ipynb
 ├── src/
 │   ├── api_utils.py
@@ -41,12 +41,11 @@ TFM/
 │   ├── grabador_audio.py
 │   ├── generacion_voces_TTS.py
 │   ├── transcripciones.py
-├── app/
-│   └── streamlit_app.py
 ├── data/
 │   ├── audios/
 │   ├── guiones_llamadas_etiquetados.json
 │   └── transcripciones.csv
+├── streamlit_app.py
 ├── requirements.txt
 └── README.md
 ```
@@ -101,6 +100,9 @@ TWILIO_URL=tu_url_twilio
 
 
 ## 🛠️ Tecnologías utilizadas
-<p align="center"> <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,github" /> <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="160"/> </p>
+<p align="center"> <img src="https://skillicons.dev/icons?i=python,pytorch,github" /> 
+<img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face" width="60" />
+<img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="160"/> 
+</p>
 
-<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff6f61,100:6a5acd&height=150&section=footer"/> </p> ```
+<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff6f61,100:6a5acd&height=150&section=footer"/> </p>
