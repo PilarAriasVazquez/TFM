@@ -29,11 +29,15 @@ En este proyecto se va a desarrollar un sistema para la detección de voces fals
 
 ```bash
 TFM/
+├── archive/
+│   ├── Audio_Classification_MFCC.ipynb
+│   ├── clasificacion_mfcc_pytorch.py
+│   └── generacion_voces_TTS.py
 ├── notebooks/
 │   ├── Audio_Classification_Fine-Tuning.ipynb
 │   ├── Audio_Classification_GenerateDataSet.ipynb
 │   ├── Audio_Classification_MFCC.ipynb
-│   ├── TextClassification_Hugging_Face.ipynb
+│   ├── Text_Classification_Hugging_Face.ipynb
 │   └── Text_Classification_Embeddings.ipynb
 ├── src/
 │   ├── api_utils.py
@@ -57,24 +61,14 @@ Clonar el repositorio
 git clone https://github.com/PilarAriasVazquez/TFM.git
 cd TFM
 ```
-
-Crear un entorno virtual
-
+Instalación y ejecución en Windows
 ```bash
-python3 -m venv venv
-source venv/bin/activate   # Linux / Mac
-venv\Scripts\activate      # Windows
+./run.sh
 ```
 
-Instalar dependencias
+Instalación y ejecución en Mac/Linux
 ```bash
-pip install -r requirements.txt
-```
-
-Ejecutar la app Streamlit
-```bash
-cd app
-streamlit run streamlit_app.py
+./run.sh
 ```
 
 ## Uso del proyecto
