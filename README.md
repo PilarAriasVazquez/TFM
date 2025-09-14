@@ -63,24 +63,19 @@ cd TFM
 ```
 Instalación y ejecución en Windows
 ```bash
-./run.sh
+python3 -m venv .venv
+source .venv/Scripts/activate.bat
+pip install -r requirements.txt
+streamlit run streamlit_app.py
 ```
 
 Instalación y ejecución en Mac/Linux
 ```bash
-./run.sh
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run streamlit_app.py
 ```
-
-## Uso del proyecto
-
-| Funcionalidad      | Archivo / Comando                      | Descripción                                     |
-| ------------------ | -------------------------------------- | ----------------------------------------------- |
-| Grabar audios   | `python grabador_audio.py`             | Inicia la grabadora y guarda audios etiquetados |
-| Clasificar voz  | `python clasificacion_mfcc_pytorch.py` | Aplica el modelo para detectar deepfakes        |
-| Generar voces   | `python generacion_voces_TTS.py`       | Genera audios sintéticos con ElevenLabs         |
-| Transcripciones | `python transcripciones.py`            | Crea un CSV con transcripciones automáticas     |
-| App web         | `streamlit run streamlit_app.py`       | Lanza la interfaz web                           |
-
 
 Crea un archivo .env en la raíz con tus credenciales:
 ```bash
