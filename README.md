@@ -29,29 +29,46 @@ En este proyecto se va a desarrollar un sistema para la detección de voces fals
 
 ```bash
 TFM/
+├── app_Linux/
+│ ├── README.md
+│ ├── requirements.txt
+│ ├── run.sh
+│ ├── streamlit_app.py
+│ └── streamlit_app_sh.zip
+├── app_Windows/
+│ ├── README.md
+│ ├── requirements.txt
+│ ├── run.bat
+│ ├── streamlit_app.py
+│ └── streamlit_app_bat.zip
 ├── archive/
-│   ├── Audio_Classification_MFCC.ipynb
-│   ├── clasificacion_mfcc_pytorch.py
-│   └── generacion_voces_TTS.py
+│ ├── Text_Classification_Hugging_Face.ipynb
+│ ├── clasificacion_mfcc_pytorch.py
+│ └── generacion_voces_TTS.py
 ├── notebooks/
-│   ├── Audio_Classification_Fine-Tuning.ipynb
-│   ├── Audio_Classification_GenerateDataSet.ipynb
-│   ├── Audio_Classification_MFCC.ipynb
-│   ├── Text_Classification_Hugging_Face.ipynb
-│   └── Text_Classification_Embeddings.ipynb
+│ ├── Audio_Classification_Fine-Tuning.ipynb
+│ ├── Audio_Classification_GenerateDataSet.ipynb
+│ ├── Text_Classification_Embeddings.ipynb
+│ └── Text_Classification__Hugging_Face.ipynb
 ├── src/
-│   ├── api_utils.py
-│   ├── clasificacion_mfcc_pytorch.py
-│   ├── grabador_audio.py
-│   ├── generacion_voces_TTS.py
-│   ├── transcripciones.py
+│ ├── __pycache__/
+│ ├── api_utils.py
+│ ├── grabador_audio.py
+│ ├── transcripciones.py
 ├── data/
-│   ├── audios/
-│   ├── guiones_llamadas_etiquetados.json
-│   └── transcripciones.csv
+│ ├── Centroides/
+│ │  ├─ centroid_non.csv
+│ │  └─ centroid_scam.csv
+│ ├── audios/
+│ │  ├─ entrenamiento.zip
+│ │  └─ test.zip
+│ ├── transcripciones/
+│ │  ├── guiones_llamadas_etiquetados.json
+│ └─ └── transcripciones.csv
+├── .env
 ├── streamlit_app.py
-├── requirements.txt
 └── README.md
+
 ```
 
 ## Instalación y ejecución
